@@ -15,8 +15,8 @@ const Navbar = () => {
 
        
 
-        <NavLink to="/favoritos" className="nav-link">
-            <a href="" className="nav-link bg-light mx-4 rounded"> Meus filmes</a>
+        <NavLink to="/filme" className="nav-link">
+            <a href="" className="nav-link bg-light mx-4 rounded"> Detalhes</a>
         </NavLink>
 
     </navbar>

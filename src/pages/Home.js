@@ -1,5 +1,5 @@
 
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import api from '../services/api'
 
 
@@ -7,36 +7,54 @@ import api from '../services/api'
 
 const Home = () => {
 
-const [filmes , setFilmes] = useState([])
+    const [filmes, setFilmes] = useState([])
 
-useEffect(() => {
+    useEffect(() => {
 
-    async function loadFilmes(){
+        async function loadFilmes() {
 
-        const response = await api.get("movie/now_playing" , {
-            params: {
-                api_key : "2dc7925c2af9630e61ec694073a070a0",
-                language: "pt-BR",
-                page: 1,
-            }
-        })
+            const response = await api.get("movie/now_playing", {
+                params: {
+                    api_key: "2dc7925c2af9630e61ec694073a070a0",
+                    language: "pt-BR",
+                    page: 1,
+                }
+            })
 
-        console.log(response)
-
-    }
-
-    loadFilmes()
-
-},[])
+            // console.log(response.data.results.slice(0,10))
+            setFilmes(response.data.results.slice(0, 15))
 
 
-    return ( 
-        <div>
-          
+        }
 
+        loadFilmes()
+
+    }, [])
+
+
+    return (
+        <div className="flex-wrap d-flex gap-3  justify-content-center mt-4">
+
+            {filmes.map((filme) => {
+                return (
+
+                    <div className="card" style={{ width: "300px" }} key={filme.id}>
+                        <img src={`http://image.tmdb.org/t/p/original/${filme.poster_path}`} class="card-img-top" />
+
+                        <div className="card-body " >
+
+                            <h5 class="card-title bg-primary text-center text-white rounded  p-4" >{filme.title}</h5>
+
+
+                        </div>
+
+                    </div>
+
+                )
+            })}
 
         </div>
-     );
+    );
 }
- 
+
 export default Home;
