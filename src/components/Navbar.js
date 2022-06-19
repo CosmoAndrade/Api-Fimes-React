@@ -1,4 +1,5 @@
 
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -7,8 +8,16 @@ const Navbar = () => {
     return ( 
         
         <navbar className="navbar bg-primary">
+        
+        <NavLink to="/" className="nav-link">
+             <h1 className='navbar-brand text-white mx-4'>PrimeFlix</h1>
+        </NavLink>
 
-        <h1 className='navbar-brand text-white mx-4'>PrimeFlix</h1>
+       
+
+        <NavLink to="/favoritos" className="nav-link">
+            <a href="" className="nav-link bg-light mx-4 rounded"> Meus filmes</a>
+        </NavLink>
 
     </navbar>
      );
